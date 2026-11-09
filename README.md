@@ -52,7 +52,7 @@ Práctica de *Implantación de Aplicaciones Web* (2º ASIR).
 
 Los colores están definidos mediante variables CSS en `:root` de `css/style.css` y se reutilizan en los componentes de la web.
 
-Las combinaciones de texto y fondo deben comprobarse para garantizar el cumplimiento de WCAG.(la más baja es 6,24:1). Los colores están definidos como variables CSS en `:root` de `css/style.css` y se reutilizan en todo el archivo con `var(--nombre)`.
+Todas las combinaciones de texto y fondo cumplen **WCAG AA** (la más baja es 4,61:1, texto secundario sobre arena clara).
 
 ### Tipografías
 - **Playfair Display** (Google Fonts) para títulos → *fallback* `Georgia, serif`.
