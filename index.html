@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
     content="¡Salvemos los libros! Iniciativa del Instituto Cuatrovientos para dar una segunda vida a los libros de la antigua biblioteca con actividades de intercambio, donación y lectura.">
-  <title>Inicio · ¡Salvemos los libros! · Instituto Cuatrovientos</title>
+  <title>¡Salvemos los libros! · Instituto Cuatrovientos</title>
   <link rel="icon" href="img/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,15 +16,20 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="css/style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+    defer></script>
+  <script src="js/app.js" defer></script>
 </head>
 
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
+  <!-- ============ CABECERA Y MENÚ (comunes a todas las vistas) ============ -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-library" data-bs-theme="dark" aria-label="Navegación principal">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio" data-view="inicio">
           <img src="img/logo.svg" alt="" width="32" height="32">
           ¡Salvemos los libros!
         </a>
@@ -34,10 +39,10 @@
         </button>
         <div class="collapse navbar-collapse" id="menuPrincipal">
           <ul class="navbar-nav ms-auto gap-lg-2">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/events.html">Actividades</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contacto</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/register.html">Inscripción</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#inicio" data-view="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#actividades" data-view="actividades">Actividades</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto" data-view="contacto">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="#registro" data-view="registro">Inscripción</a></li>
           </ul>
         </div>
       </div>
@@ -45,148 +50,509 @@
   </header>
 
   <main id="contenido">
-    <!-- Presentación -->
-    <section class="hero py-5" aria-labelledby="titulo-inicio">
-      <div class="container py-lg-5">
-        <div class="row">
-          <div class="col-lg-8">
-            <p class="text-uppercase fw-semibold small mb-2">Instituto Cuatrovientos · Aula de descanso</p>
-            <h1 id="titulo-inicio" class="display-4 mb-3">¡Salvemos los libros!</h1>
-            <p class="lead mb-4">La antigua biblioteca cerró, pero sus libros siguen aquí. Ahora viven en la nueva aula
-              de descanso y te esperan para que los leas, los intercambies o les sumes compañeros. Entre todos, vamos a
-              darles una segunda vida.</p>
-            <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-light btn-lg fw-semibold" href="pages/events.html">Ver actividades</a>
-              <a class="btn btn-accent btn-lg fw-semibold" href="pages/register.html">Quiero participar</a>
+
+    <!-- ======================= VISTA 1: INICIO ======================= -->
+    <section id="inicio" class="vista" aria-labelledby="titulo-inicio">
+      <div class="hero py-5">
+        <div class="container py-lg-5">
+          <div class="row">
+            <div class="col-lg-8">
+              <p class="text-uppercase fw-semibold small mb-2">Instituto Cuatrovientos · Aula de descanso</p>
+              <h1 id="titulo-inicio" class="titulo-vista display-4 mb-3" tabindex="-1">¡Salvemos los libros!</h1>
+              <p class="lead mb-4">La antigua biblioteca cerró, pero sus libros siguen aquí. Ahora viven en la nueva aula
+                de descanso y te esperan para que los leas, los intercambies o les sumes compañeros. Entre todos, vamos a
+                darles una segunda vida.</p>
+              <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-light btn-lg fw-semibold" href="#actividades" data-view="actividades">Ver actividades</a>
+                <a class="btn btn-accent btn-lg fw-semibold" href="#registro" data-view="registro">Quiero participar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Objetivos de la iniciativa -->
+      <div class="py-5">
+        <div class="container">
+          <h2 class="section-title">Nuestros objetivos</h2>
+          <p class="mb-4 col-lg-9">Más de 600 libros esperan en las estanterías del aula de descanso: novelas, clásicos,
+            cómics, ensayos y manuales técnicos. Esta iniciativa nace del alumnado de 2º ASIR para que no acaben olvidados
+            en una caja.</p>
+          <div class="row g-4">
+            <div class="col-sm-6 col-lg-3">
+              <article class="goal-card h-100 p-4 rounded-3 shadow-sm">
+                <h3 class="h5">Dar a conocer</h3>
+                <p class="mb-0">Mostrar qué libros hay en el aula de descanso para que cualquiera pueda encontrar su
+                  próxima lectura.</p>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <article class="goal-card h-100 p-4 rounded-3 shadow-sm">
+                <h3 class="h5">Intercambiar</h3>
+                <p class="mb-0">Trae un libro que ya hayas leído y llévate otro. Así el fondo se renueva sin coste para
+                  nadie.</p>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <article class="goal-card h-100 p-4 rounded-3 shadow-sm">
+                <h3 class="h5">Donar</h3>
+                <p class="mb-0">Recoger libros en buen estado de familias, profesorado y alumnado para ampliar la
+                  colección.</p>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <article class="goal-card h-100 p-4 rounded-3 shadow-sm">
+                <h3 class="h5">Leer juntos</h3>
+                <p class="mb-0">Organizar clubes de lectura y lecturas en voz alta para compartir lo que nos hacen sentir
+                  los libros.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Libros destacados: cada card guarda información extra en atributos data-* -->
+      <div class="py-5 bg-white border-top border-bottom">
+        <div class="container">
+          <h2 class="section-title">Libros destacados</h2>
+          <p class="mb-4">Una pequeña muestra de lo que puedes encontrar este mes en las estanterías. Pulsa
+            «Más información» para ver los detalles de cada libro o «Destacar» para marcar tus favoritos.</p>
+          <div class="row g-4">
+            <div class="col-sm-6 col-lg-3">
+              <article class="card book-card h-100" data-anio="2014" data-paginas="224" data-estado="Bueno"
+                data-ubicacion="Estantería A · Humor"
+                data-sinopsis="Incluye retos para hacer en grupo, páginas para dibujar y bromas que el propio autor propone hacer a tus amigos. Ideal para leer a ratos en el recreo.">
+                <img src="img/libros/el-libro-troll.svg" class="card-img-top"
+                  alt="Portada negra del libro El libro troll, de El Rubius" width="300" height="450">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title h5">El libro troll</h3>
+                  <p class="book-meta mb-2">El Rubius</p>
+                  <p><span class="badge rounded-pill text-bg-light border">Humor · Youtubers</span></p>
+                  <p class="card-text">Un libro de humor del youtuber El Rubius lleno de bromas, retos y ocurrencias
+                    para pasar un buen rato y hacer reír a quien tengas al lado.</p>
+                  <div class="d-flex flex-wrap gap-2 mt-auto">
+                    <button type="button" class="btn btn-primary btn-sm btn-info-libro" aria-expanded="false">Más información</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm btn-destacar" aria-pressed="false">Destacar</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <article class="card book-card h-100" data-anio="2015" data-paginas="176" data-estado="Muy bueno"
+                data-ubicacion="Estantería B · Aventuras"
+                data-sinopsis="Primer libro de la saga Wigetta, con muchas ilustraciones a color y capítulos cortos. Perfecto para quien quiere empezar a leer sin agobios.">
+                <img src="img/libros/wigetta.svg" class="card-img-top"
+                  alt="Portada verde del libro Wigetta: Un viaje mágico, de Vegetta777 y Willyrex" width="300"
+                  height="450">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title h5">Wigetta: Un viaje mágico</h3>
+                  <p class="book-meta mb-2">Vegetta777 y Willyrex</p>
+                  <p><span class="badge rounded-pill text-bg-light border">Aventuras · Youtubers</span></p>
+                  <p class="card-text">Vegetta y Trotuman viven una aventura mágica llena de humor, acertijos y
+                    situaciones disparatadas de la mano de los youtubers Vegetta777 y Willyrex.</p>
+                  <div class="d-flex flex-wrap gap-2 mt-auto">
+                    <button type="button" class="btn btn-primary btn-sm btn-info-libro" aria-expanded="false">Más información</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm btn-destacar" aria-pressed="false">Destacar</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <article class="card book-card h-100" data-anio="2022" data-paginas="256" data-estado="Como nuevo"
+                data-ubicacion="Estantería C · Crecimiento personal"
+                data-sinopsis="Jordi Wild repasa su trayectoria personal y profesional y comparte su visión sobre la disciplina, el fracaso y la salud mental.">
+                <img src="img/libros/asi-es-la-puta-vida.svg" class="card-img-top"
+                  alt="Portada gris del libro Así es la puta vida, de Jordi Wild" width="300" height="450">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title h5">Así es la puta vida</h3>
+                  <p class="book-meta mb-2">Jordi Wild</p>
+                  <p><span class="badge rounded-pill text-bg-light border">Autoayuda · Motivación</span></p>
+                  <p class="card-text">Reflexiones y consejos del youtuber Jordi Wild sobre el esfuerzo, la
+                    superación y cómo afrontar la vida sin filtros.</p>
+                  <div class="d-flex flex-wrap gap-2 mt-auto">
+                    <button type="button" class="btn btn-primary btn-sm btn-info-libro" aria-expanded="false">Más información</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm btn-destacar" aria-pressed="false">Destacar</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <article class="card book-card h-100" data-anio="2016" data-paginas="208"
+                data-estado="Aceptable (cubierta algo gastada)" data-ubicacion="Estantería C · Divulgación"
+                data-sinopsis="Explica cómo empezó su canal, cómo se preparan los vídeos y qué hay detrás de la vida diaria de un creador de contenido.">
+                <img src="img/libros/los-secretos-de-youtube.svg" class="card-img-top"
+                  alt="Portada azul marino del libro Los secretos de YouTube, de TheGrefg" width="300"
+                  height="450">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title h5">Los secretos de YouTube</h3>
+                  <p class="book-meta mb-2">TheGrefg</p>
+                  <p><span class="badge rounded-pill text-bg-light border">No ficción · Youtubers</span></p>
+                  <p class="card-text">El streamer TheGrefg cuenta desde dentro cómo funciona YouTube: trucos,
+                    consejos y anécdotas para entender qué hay detrás de los vídeos y los creadores de contenido.</p>
+                  <div class="d-flex flex-wrap gap-2 mt-auto">
+                    <button type="button" class="btn btn-primary btn-sm btn-info-libro" aria-expanded="false">Más información</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm btn-destacar" aria-pressed="false">Destacar</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Llamada a la acción -->
+      <div class="py-5">
+        <div class="container">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-8">
+              <h2 class="section-title">¿Cómo puedes participar?</h2>
+              <p class="mb-0">Apúntate a cualquiera de nuestras actividades: puedes donar libros que ya no uses,
+                intercambiarlos en el mercadillo o unirte al club de lectura en los recreos. No hace falta experiencia,
+                solo ganas de leer.</p>
+            </div>
+            <div class="col-lg-4 d-flex flex-wrap gap-2 justify-content-lg-end">
+              <a class="btn btn-primary btn-lg" href="#registro" data-view="registro">Inscribirme</a>
+              <a class="btn btn-outline-primary btn-lg" href="#contacto" data-view="contacto">Tengo una duda</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Objetivos de la iniciativa -->
-    <section class="py-5" aria-labelledby="titulo-objetivos">
-      <div class="container">
-        <h2 id="titulo-objetivos" class="section-title">Nuestros objetivos</h2>
-        <p class="mb-4 col-lg-9">Más de 600 libros esperan en las estanterías del aula de descanso: novelas, clásicos,
-          cómics, ensayos y manuales técnicos. Esta iniciativa nace del alumnado de 2º ASIR para que no acaben olvidados
-          en una caja.</p>
-        <div class="row g-4">
-          <div class="col-sm-6 col-lg-3">
-            <article class="goal-card h-100 p-4 rounded-3 shadow-sm">
-              <h3 class="h5">Dar a conocer</h3>
-              <p class="mb-0">Mostrar qué libros hay en el aula de descanso para que cualquiera pueda encontrar su
-                próxima lectura.</p>
-            </article>
+    <!-- ===================== VISTA 2: ACTIVIDADES ===================== -->
+    <section id="actividades" class="vista" aria-labelledby="titulo-actividades" hidden>
+      <div class="page-header py-5">
+        <div class="container">
+          <h2 id="titulo-actividades" class="titulo-vista display-6 mb-2" tabindex="-1">Actividades</h2>
+          <p class="lead mb-0 col-lg-9">Calendario del curso 2026-2027. Todas las actividades son gratuitas y abiertas a
+            alumnado, profesorado y familias del instituto.</p>
+        </div>
+      </div>
+
+      <div class="py-5">
+        <div class="container">
+          <h3 class="section-title">Próximas actividades</h3>
+
+          <!-- Filtros: cada botón guarda en data-filtro el tipo que resalta -->
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-4" role="group" aria-label="Resaltar actividades por tipo">
+            <span class="fw-semibold me-1">Resaltar:</span>
+            <button type="button" class="btn btn-outline-primary btn-sm btn-filtro" data-filtro="intercambio" aria-pressed="false">Intercambio</button>
+            <button type="button" class="btn btn-outline-primary btn-sm btn-filtro" data-filtro="donacion" aria-pressed="false">Donación</button>
+            <button type="button" class="btn btn-outline-primary btn-sm btn-filtro" data-filtro="lectura" aria-pressed="false">Lectura</button>
+            <button type="button" class="btn btn-outline-primary btn-sm btn-filtro active" data-filtro="todos" aria-pressed="true">Todos</button>
           </div>
-          <div class="col-sm-6 col-lg-3">
-            <article class="goal-card h-100 p-4 rounded-3 shadow-sm">
-              <h3 class="h5">Intercambiar</h3>
-              <p class="mb-0">Trae un libro que ya hayas leído y llévate otro. Así el fondo se renueva sin coste para
-                nadie.</p>
-            </article>
+
+          <div class="table-responsive rounded-3 border shadow-sm">
+            <table class="table table-library table-hover align-middle mb-0">
+              <caption class="px-3">Actividades de donación, intercambio y lectura organizadas en el Instituto
+                Cuatrovientos (curso 2026-2027)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Lugar</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Detalles</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="evento evento-donacion" data-tipo="donacion"
+                  data-detalle="Trae los libros en una bolsa con tu nombre. Aceptamos novelas, cómics, ensayos y manuales en buen estado. Al terminar el recreo, el alumnado voluntario de 2º ASIR los clasifica por género.">
+                  <th scope="row" class="col-nombre">Gran recogida de libros <span class="badge badge-donacion d-block d-sm-inline-block mt-1">Donación</span></th>
+                  <td class="col-fecha"><time datetime="2026-11-18T10:30">18 nov. 2026, 10:30</time></td>
+                  <td>Vestíbulo principal</td>
+                  <td class="col-descripcion">Punto de recogida durante el recreo para donar libros en buen estado. Cada donación se registra con el nombre de quien la hace.</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm btn-detalle" aria-expanded="false">Ver detalles</button></td>
+                </tr>
+                <tr class="evento evento-intercambio" data-tipo="intercambio"
+                  data-detalle="Por cada libro que traigas recibes un token pirata (una ficha de cartón) que puedes canjear por cualquier libro de la mesa de intercambio durante todo el trimestre.">
+                  <th scope="row" class="col-nombre">Cambio de libros por el token pirata <span class="badge badge-intercambio d-block d-sm-inline-block mt-1">Intercambio</span></th>
+                  <td class="col-fecha"><time datetime="2026-11-25T10:30">25 nov. 2026, 10:30</time></td>
+                  <td>Aula de descanso</td>
+                  <td class="col-descripcion">Trae un libro que ya hayas leído y cámbialo por un token pirata. Sin dinero real, solo trueque gamer (no cap).</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm btn-detalle" aria-expanded="false">Ver detalles</button></td>
+                </tr>
+                <tr class="evento evento-lectura" data-tipo="lectura"
+                  data-detalle="No hace falta haber terminado el libro. Hay 10 ejemplares para prestar en el aula de descanso. La sesión dura unos 30 minutos.">
+                  <th scope="row" class="col-nombre">Club de lectura: <cite>Los secretos de YouTube</cite> <span class="badge badge-lectura d-block d-sm-inline-block mt-1">Lectura</span></th>
+                  <td class="col-fecha"><time datetime="2026-12-02T14:30">2 dic. 2026, 14:30</time></td>
+                  <td>Aula de descanso</td>
+                  <td class="col-descripcion">Primera sesión del club: comentamos el libro de TheGrefg, charlamos sobre el mundo de los creadores de contenido y elegimos entre todos la próxima lectura.</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm btn-detalle" aria-expanded="false">Ver detalles</button></td>
+                </tr>
+                <tr class="evento evento-lectura" data-tipo="lectura"
+                  data-detalle="Sesión guiada por el departamento de Humanidades. Se leerán fragmentos traducidos al castellano y se comentará su contexto histórico. Plazas limitadas a 25 personas.">
+                  <th scope="row" class="col-nombre">Lectura de la Torá <span class="badge badge-lectura d-block d-sm-inline-block mt-1">Lectura</span></th>
+                  <td class="col-fecha"><time datetime="2026-12-16T12:00">16 dic. 2026, 12:00</time></td>
+                  <td>Salón de actos</td>
+                  <td class="col-descripcion">Lectura y estudio de pasajes de la Torá, explorando sus textos sagrados y su tradición histórica y cultural.</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm btn-detalle" aria-expanded="false">Ver detalles</button></td>
+                </tr>
+                <tr class="evento evento-donacion" data-tipo="donacion"
+                  data-detalle="Los ejemplares donados se repartirán entre las aulas de descanso del instituto. Si tienes un ejemplar en casa, puedes traerlo ese mismo día.">
+                  <th scope="row" class="col-nombre">Mi vida a través de mis textos (JPelirrojo) <span class="badge badge-donacion d-block d-sm-inline-block mt-1">Donación</span></th>
+                  <td class="col-fecha"><time datetime="2027-01-20T10:30">20 ene. 2027, 10:30</time></td>
+                  <td>Aula de descanso</td>
+                  <td class="col-descripcion">Donación especial de ejemplares del libro autobiográfico de JPelirrojo para fomentar la reflexión y la creatividad literaria.</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm btn-detalle" aria-expanded="false">Ver detalles</button></td>
+                </tr>
+                <tr class="evento evento-intercambio" data-tipo="intercambio"
+                  data-detalle="Trae como máximo 5 cómics o tomos de manga. Las colecciones incompletas se intentarán completar con las de otros participantes.">
+                  <th scope="row" class="col-nombre">Intercambio de cómics y manga <span class="badge badge-intercambio d-block d-sm-inline-block mt-1">Intercambio</span></th>
+                  <td class="col-fecha"><time datetime="2027-02-10T10:30">10 feb. 2027, 10:30</time></td>
+                  <td>Patio cubierto</td>
+                  <td class="col-descripcion">Edición especial del mercadillo dedicada a cómics, novela gráfica y manga.</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm btn-detalle" aria-expanded="false">Ver detalles</button></td>
+                </tr>
+                <tr class="evento evento-donacion" data-tipo="donacion"
+                  data-detalle="Se recogen manuales técnicos de electrónica, electricidad y fontanería. Los planos más creativos se expondrán en el vestíbulo durante una semana.">
+                  <th scope="row" class="col-nombre">Manual de construcción: Máquina del tiempo con una lavadora <span class="badge badge-donacion d-block d-sm-inline-block mt-1">Donación</span></th>
+                  <td class="col-fecha"><time datetime="2027-03-10T10:30">10 mar. 2027, 10:30</time></td>
+                  <td>Biblioteca de aula, 1.ª planta</td>
+                  <td class="col-descripcion">Dona los planos técnicos para transformar tu vieja lavadora en un condensador de fluzo. Se requieren nociones de fontanería cuántica y un destornillador fijo.</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm btn-detalle" aria-expanded="false">Ver detalles</button></td>
+                </tr>
+                <tr class="evento evento-lectura" data-tipo="lectura"
+                  data-detalle="Apúntate en la mesa del patio para elegir tu turno de diez minutos. Habrá ejemplares de Don Quijote disponibles para quien no traiga el suyo.">
+                  <th scope="row" class="col-nombre">Maratón de lectura del Día del Libro <span class="badge badge-lectura d-block d-sm-inline-block mt-1">Lectura</span></th>
+                  <td class="col-fecha"><time datetime="2027-04-23T09:00">23 abr. 2027, 09:00</time></td>
+                  <td>Patio cubierto</td>
+                  <td class="col-descripcion">Lectura ininterrumpida de <cite>Don Quijote de la Mancha</cite> por turnos de diez minutos durante toda la mañana.</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm btn-detalle" aria-expanded="false">Ver detalles</button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="col-sm-6 col-lg-3">
-            <article class="goal-card h-100 p-4 rounded-3 shadow-sm">
-              <h3 class="h5">Donar</h3>
-              <p class="mb-0">Recoger libros en buen estado de familias, profesorado y alumnado para ampliar la
-                colección.</p>
-            </article>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <article class="goal-card h-100 p-4 rounded-3 shadow-sm">
-              <h3 class="h5">Leer juntos</h3>
-              <p class="mb-0">Organizar clubes de lectura y lecturas en voz alta para compartir lo que nos hacen sentir
-                los libros.</p>
-            </article>
+          <p class="mt-4 mb-0">¿Te interesa alguna? <a href="#registro" data-view="registro">Inscríbete aquí</a> o
+            <a href="#contacto" data-view="contacto">escríbenos</a> si quieres proponer una actividad.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== VISTA 3: CONTACTO ====================== -->
+    <section id="contacto" class="vista" aria-labelledby="titulo-contacto" hidden>
+      <div class="page-header py-5">
+        <div class="container">
+          <h2 id="titulo-contacto" class="titulo-vista display-6 mb-2" tabindex="-1">Contacto</h2>
+          <p class="lead mb-0 col-lg-9">¿Tienes libros para donar, una duda o una idea para una actividad? Escríbenos y te
+            responderemos en un plazo de dos días lectivos.</p>
+        </div>
+      </div>
+
+      <div class="py-5">
+        <div class="container">
+          <div class="row g-5">
+            <div class="col-lg-7">
+              <div class="form-panel p-4 p-md-5 shadow-sm">
+                <h3 class="section-title">Envíanos un mensaje</h3>
+                <p class="small">Los campos marcados con <span class="required-mark">*</span> son obligatorios.</p>
+
+                <!-- Aquí el JavaScript añade el mensaje de error o de confirmación -->
+                <div id="contacto-alerta"></div>
+
+                <form id="form-contacto" action="#" method="post" novalidate>
+                  <div class="mb-3">
+                    <label for="contacto-nombre" class="form-label">Nombre y apellidos <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="text" class="form-control" id="contacto-nombre" name="nombre" autocomplete="name"
+                      required minlength="2" maxlength="60" aria-describedby="contacto-nombre-ayuda contacto-nombre-error">
+                    <div id="contacto-nombre-ayuda" class="form-text">Entre 2 y 60 caracteres.</div>
+                    <div id="contacto-nombre-error" class="invalid-feedback">Escribe tu nombre (al menos 2 caracteres).</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="contacto-email" class="form-label">Correo electrónico <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="email" class="form-control" id="contacto-email" name="email" autocomplete="email"
+                      required maxlength="100" placeholder="nombre@ejemplo.com"
+                      aria-describedby="contacto-email-ayuda contacto-email-error">
+                    <div id="contacto-email-ayuda" class="form-text">Solo lo usaremos para responderte.</div>
+                    <div id="contacto-email-error" class="invalid-feedback">Escribe un correo válido, por ejemplo nombre@ejemplo.com.</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="contacto-telefono" class="form-label">Teléfono <span class="optional-mark">(opcional)</span></label>
+                    <input type="tel" class="form-control" id="contacto-telefono" name="telefono" autocomplete="tel"
+                      pattern="[6-9][0-9]{8}" maxlength="9" inputmode="numeric"
+                      aria-describedby="contacto-telefono-ayuda contacto-telefono-error">
+                    <div id="contacto-telefono-ayuda" class="form-text">9 cifras, sin espacios ni prefijo (por ejemplo, 612345678).</div>
+                    <div id="contacto-telefono-error" class="invalid-feedback">Si lo escribes, el teléfono debe tener exactamente 9 cifras.</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="contacto-asunto" class="form-label">Asunto <span class="required-mark" aria-hidden="true">*</span></label>
+                    <select class="form-select" id="contacto-asunto" name="asunto" required
+                      aria-describedby="contacto-asunto-ayuda contacto-asunto-error">
+                      <option value="" selected disabled>Elige un asunto…</option>
+                      <option value="donacion">Quiero donar libros</option>
+                      <option value="intercambio">Dudas sobre el intercambio</option>
+                      <option value="lectura">Club de lectura</option>
+                      <option value="propuesta">Proponer una actividad</option>
+                      <option value="otro">Otro asunto</option>
+                    </select>
+                    <div id="contacto-asunto-ayuda" class="form-text">Nos ayuda a dirigir tu mensaje a la persona adecuada.</div>
+                    <div id="contacto-asunto-error" class="invalid-feedback">Elige un asunto de la lista.</div>
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="contacto-mensaje" class="form-label">Mensaje <span class="required-mark" aria-hidden="true">*</span></label>
+                    <textarea class="form-control" id="contacto-mensaje" name="mensaje" rows="5" required minlength="10"
+                      maxlength="500" aria-describedby="contacto-mensaje-ayuda contacto-mensaje-error"></textarea>
+                    <div id="contacto-mensaje-ayuda" class="form-text">Entre 10 y 500 caracteres.</div>
+                    <div id="contacto-mensaje-error" class="invalid-feedback">El mensaje debe tener al menos 10 caracteres.</div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-lg">Enviar mensaje</button>
+                </form>
+              </div>
+            </div>
+
+            <aside class="col-lg-5" aria-labelledby="titulo-donde">
+              <h3 id="titulo-donde" class="section-title">Dónde encontrarnos</h3>
+              <dl class="mb-4">
+                <dt>Lugar</dt>
+                <dd>Aula de descanso, planta baja del Instituto Cuatrovientos (Pamplona).</dd>
+                <dt>Horario</dt>
+                <dd>De lunes a viernes, durante los recreos (10:30 – 11:00 y 14:15 – 14:45).</dd>
+                <dt>Quién lo organiza</dt>
+                <dd>Alumnado de 2º ASIR con el apoyo del departamento de Informática.</dd>
+              </dl>
+              <div class="goal-card p-4 rounded-3 shadow-sm">
+                <h4 class="h5">¿Vienes a donar?</h4>
+                <p class="mb-0">Aceptamos libros en buen estado: sin páginas arrancadas, sin humedad y sin subrayados
+                  excesivos. Consulta las fechas de recogida en el <a href="#actividades" data-view="actividades">calendario
+                  de actividades</a>.</p>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Libros destacados -->
-    <section class="py-5 bg-white border-top border-bottom" aria-labelledby="titulo-libros">
-      <div class="container">
-        <h2 id="titulo-libros" class="section-title">Libros destacados</h2>
-        <p class="mb-4">Una pequeña muestra de lo que puedes encontrar este mes en las estanterías.</p>
-        <div class="row g-4">
-          <div class="col-sm-6 col-lg-3">
-            <article class="card book-card h-100">
-              <img src="img/libros/el-libro-troll.svg" class="card-img-top"
-                alt="Portada negra del libro El libro troll, de El Rubius" width="300" height="450">
-              <div class="card-body d-flex flex-column">
-                <h3 class="card-title h5">El libro troll</h3>
-                <p class="book-meta mb-2">El Rubius</p>
-                <p><span class="badge rounded-pill text-bg-light border">Humor · Youtubers</span></p>
-                <p class="card-text mb-0">Un libro de humor del youtuber El Rubius lleno de bromas, retos y ocurrencias
-                  para pasar un buen rato y hacer reír a quien tengas al lado.</p>
-              </div>
-            </article>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <article class="card book-card h-100">
-              <img src="img/libros/wigetta.svg" class="card-img-top"
-                alt="Portada verde del libro Wigetta: Un viaje mágico, de Vegetta777 y Willyrex" width="300"
-                height="450">
-              <div class="card-body d-flex flex-column">
-                <h3 class="card-title h5">Wigetta: Un viaje mágico</h3>
-                <p class="book-meta mb-2">Vegetta777 y Willyrex</p>
-                <p><span class="badge rounded-pill text-bg-light border">Aventuras · Youtubers</span></p>
-                <p class="card-text mb-0">Vegetta y Trotuman viven una aventura mágica llena de humor, acertijos y
-                  situaciones disparatadas de la mano de los youtubers Vegetta777 y Willyrex.</p>
-              </div>
-            </article>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <article class="card book-card h-100">
-              <img src="img/libros/asi-es-la-puta-vida.svg" class="card-img-top"
-                alt="Portada gris del libro Así es la puta vida, de Jordi Wild" width="300" height="450">
-              <div class="card-body d-flex flex-column">
-                <h3 class="card-title h5">Así es la puta vida</h3>
-                <p class="book-meta mb-2">Jordi Wild</p>
-                <p><span class="badge rounded-pill text-bg-light border">Autoayuda · Motivación</span></p>
-                <p class="card-text mb-0">Reflexiones y consejos del youtuber Jordi Wild sobre el esfuerzo, la
-                  superación y cómo afrontar la vida sin filtros.</p>
-              </div>
-            </article>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <article class="card book-card h-100">
-              <img src="img/libros/los-secretos-de-youtube.svg" class="card-img-top"
-                alt="Portada azul marino del libro Los secretos de YouTube, de TheGrefg" width="300"
-                height="450">
-              <div class="card-body d-flex flex-column">
-                <h3 class="card-title h5">Los secretos de YouTube</h3>
-                <p class="book-meta mb-2">TheGrefg</p>
-                <p><span class="badge rounded-pill text-bg-light border">No ficción · Youtubers</span></p>
-                <p class="card-text mb-0">El streamer TheGrefg cuenta desde dentro cómo funciona YouTube: trucos,
-                  consejos y anécdotas para entender qué hay detrás de los vídeos y los creadores de contenido.</p>
-              </div>
-            </article>
-          </div>
+    <!-- ====================== VISTA 4: REGISTRO ====================== -->
+    <section id="registro" class="vista" aria-labelledby="titulo-registro" hidden>
+      <div class="page-header py-5">
+        <div class="container">
+          <h2 id="titulo-registro" class="titulo-vista display-6 mb-2" tabindex="-1">Inscripción</h2>
+          <p class="lead mb-0 col-lg-9">Apúntate a ¡Salvemos los libros! y te avisaremos de cada actividad. Solo te
+            llevará un minuto.</p>
         </div>
       </div>
-    </section>
 
-    <!-- Llamada a la acción -->
-    <section class="py-5" aria-labelledby="titulo-participa">
-      <div class="container">
-        <div class="row align-items-center g-4">
-          <div class="col-lg-8">
-            <h2 id="titulo-participa" class="section-title">¿Cómo puedes participar?</h2>
-            <p class="mb-0">Apúntate a cualquiera de nuestras actividades: puedes donar libros que ya no uses,
-              intercambiarlos en el mercadillo o unirte al club de lectura en los recreos. No hace falta experiencia,
-              solo ganas de leer.</p>
-          </div>
-          <div class="col-lg-4 d-flex flex-wrap gap-2 justify-content-lg-end">
-            <a class="btn btn-primary btn-lg" href="pages/register.html">Inscribirme</a>
-            <a class="btn btn-outline-primary btn-lg" href="pages/contact.html">Tengo una duda</a>
+      <div class="py-5">
+        <div class="container">
+          <div class="row g-5">
+            <div class="col-lg-7">
+              <div class="form-panel p-4 p-md-5 shadow-sm">
+                <h3 class="section-title">Formulario de inscripción</h3>
+                <p class="small">Los campos marcados con <span class="required-mark">*</span> son obligatorios. El resto
+                  son opcionales.</p>
+
+                <!-- Aquí el JavaScript añade el mensaje de error o de confirmación -->
+                <div id="registro-alerta"></div>
+
+                <form id="form-registro" action="#" method="post" novalidate>
+                  <div class="mb-3">
+                    <label for="registro-nombre" class="form-label">Nombre y apellidos <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="text" class="form-control" id="registro-nombre" name="nombre" autocomplete="name"
+                      required minlength="2" maxlength="60" aria-describedby="registro-nombre-ayuda registro-nombre-error">
+                    <div id="registro-nombre-ayuda" class="form-text">Entre 2 y 60 caracteres.</div>
+                    <div id="registro-nombre-error" class="invalid-feedback">Escribe tu nombre (al menos 2 caracteres).</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="registro-email" class="form-label">Correo electrónico <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="email" class="form-control" id="registro-email" name="email" autocomplete="email"
+                      required maxlength="100" placeholder="nombre@ejemplo.com"
+                      aria-describedby="registro-email-ayuda registro-email-error">
+                    <div id="registro-email-ayuda" class="form-text">Te enviaremos aquí los avisos de las actividades.</div>
+                    <div id="registro-email-error" class="invalid-feedback">Escribe un correo válido, por ejemplo nombre@ejemplo.com.</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="registro-curso" class="form-label">Curso o grupo <span class="required-mark" aria-hidden="true">*</span></label>
+                    <select class="form-select" id="registro-curso" name="curso" required
+                      aria-describedby="registro-curso-ayuda registro-curso-error">
+                      <option value="" selected disabled>Elige tu curso o grupo…</option>
+                      <optgroup label="Grado Medio">
+                        <option value="1-smr">1º SMR</option>
+                        <option value="2-smr">2º SMR</option>
+                      </optgroup>
+                      <optgroup label="Grado Superior">
+                        <option value="1-asir">1º ASIR</option>
+                        <option value="2-asir">2º ASIR</option>
+                        <option value="1-dam">1º DAM</option>
+                        <option value="2-dam">2º DAM</option>
+                      </optgroup>
+                      <optgroup label="Personal del centro">
+                        <option value="profesorado">Profesorado</option>
+                        <option value="pas">Personal de administración y servicios</option>
+                      </optgroup>
+                      <option value="otro">Familia u otro</option>
+                    </select>
+                    <div id="registro-curso-ayuda" class="form-text">Así sabremos qué actividades encajan con tu horario.</div>
+                    <div id="registro-curso-error" class="invalid-feedback">Elige tu curso o grupo.</div>
+                  </div>
+
+                  <fieldset class="mb-3" aria-describedby="registro-participacion-ayuda registro-participacion-error">
+                    <legend class="form-label fs-6">Tipo de participación <span class="required-mark" aria-hidden="true">*</span></legend>
+                    <div class="form-check">
+                      <input class="form-check-input participacion" type="checkbox" id="registro-donar" name="participacion" value="donar">
+                      <label class="form-check-label" for="registro-donar">Donar libros</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input participacion" type="checkbox" id="registro-intercambiar" name="participacion" value="intercambiar">
+                      <label class="form-check-label" for="registro-intercambiar">Intercambiar libros</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input participacion" type="checkbox" id="registro-leer" name="participacion" value="leer">
+                      <label class="form-check-label" for="registro-leer">Participar en lecturas y club de lectura</label>
+                    </div>
+                    <div id="registro-participacion-ayuda" class="form-text">Marca al menos una opción. Puedes elegir varias.</div>
+                    <div id="registro-participacion-error" class="invalid-feedback">Marca al menos un tipo de participación.</div>
+                  </fieldset>
+
+                  <div class="mb-3">
+                    <label for="registro-comentarios" class="form-label">Comentarios <span class="optional-mark">(opcional)</span></label>
+                    <textarea class="form-control" id="registro-comentarios" name="comentarios" rows="4" maxlength="300"
+                      aria-describedby="registro-comentarios-ayuda"></textarea>
+                    <div id="registro-comentarios-ayuda" class="form-text">Por ejemplo, qué géneros te gustan o cuántos
+                      libros podrías donar. Máximo 300 caracteres.</div>
+                  </div>
+
+                  <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="registro-normas" name="normas" value="acepto"
+                      required aria-describedby="registro-normas-ayuda registro-normas-error">
+                    <label class="form-check-label" for="registro-normas">He leído y acepto las normas de participación <span class="required-mark" aria-hidden="true">*</span></label>
+                    <div id="registro-normas-ayuda" class="form-text">Las tienes resumidas junto a este formulario.</div>
+                    <div id="registro-normas-error" class="invalid-feedback">Tienes que aceptar las normas para inscribirte.</div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-lg">Enviar inscripción</button>
+                </form>
+              </div>
+            </div>
+
+            <aside class="col-lg-5" aria-labelledby="titulo-normas">
+              <h3 id="titulo-normas" class="section-title">Normas de participación</h3>
+              <ol class="mb-4">
+                <li class="mb-2">Los libros donados deben estar en buen estado: completos, limpios y sin humedad.</li>
+                <li class="mb-2">En el intercambio se entrega un libro por cada libro que se recoge.</li>
+                <li class="mb-2">Los libros del aula de descanso se leen allí o se devuelven en un máximo de tres semanas.</li>
+                <li class="mb-2">En el club de lectura se respetan los turnos de palabra y todas las opiniones.</li>
+                <li>Tus datos solo se usarán para avisarte de las actividades y no se compartirán con nadie.</li>
+              </ol>
+              <div class="goal-card p-4 rounded-3 shadow-sm">
+                <h4 class="h5">¿Prefieres preguntar antes?</h4>
+                <p class="mb-0">Consulta el <a href="#actividades" data-view="actividades">calendario de actividades</a> o
+                  <a href="#contacto" data-view="contacto">escríbenos</a> y te lo contamos todo.</p>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ===================== PIE (común a todas las vistas) ===================== -->
   <footer class="site-footer py-4">
     <div class="container">
       <div class="row g-4">
@@ -198,10 +564,10 @@
         <nav class="col-md-6" aria-label="Enlaces del pie de página">
           <h2>Navegación</h2>
           <ul class="list-inline mb-0">
-            <li class="list-inline-item"><a href="index.html">Inicio</a></li>
-            <li class="list-inline-item"><a href="pages/events.html">Actividades</a></li>
-            <li class="list-inline-item"><a href="pages/contact.html">Contacto</a></li>
-            <li class="list-inline-item"><a href="pages/register.html">Inscripción</a></li>
+            <li class="list-inline-item"><a href="#inicio" data-view="inicio">Inicio</a></li>
+            <li class="list-inline-item"><a href="#actividades" data-view="actividades">Actividades</a></li>
+            <li class="list-inline-item"><a href="#contacto" data-view="contacto">Contacto</a></li>
+            <li class="list-inline-item"><a href="#registro" data-view="registro">Inscripción</a></li>
           </ul>
         </nav>
       </div>
@@ -209,10 +575,6 @@
         Aplicaciones Web · 2º ASIR</p>
     </div>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
 </body>
 
 </html>
