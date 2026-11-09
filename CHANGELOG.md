@@ -6,6 +6,11 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 
 ## [Sin publicar]
 
+## [1.0.1] - 2026-11-09
+
+### Cambiado
+- CSS simplificado: colores HEX directos, fondo liso en la portada, línea de títulos con `border-bottom` y clases propias para las columnas de la tabla en lugar de selectores avanzados.
+
 ## [1.0.0] - 2026-11-09
 Entrega 1: web estática multipágina con Bootstrap 5.3. Conservada en la rama `v1.0-estatica`.
 

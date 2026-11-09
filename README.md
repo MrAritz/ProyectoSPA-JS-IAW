@@ -45,7 +45,7 @@ Práctica de *Implantación de Aplicaciones Web* (2º ASIR).
 | Tinta | `#2B2420` | Texto principal |
 | Gris cálido | `#5C524A` | Texto secundario |
 
-Todas las combinaciones de texto cumplen **WCAG AA** (la más baja es 6,24:1). Los colores están definidos como variables CSS en `:root` de `css/style.css` y sobrescriben las variables de Bootstrap (`--bs-body-bg`, `--bs-primary`...).
+Todas las combinaciones de texto cumplen **WCAG AA** (la más baja es 6,24:1). Los colores están definidos como variables CSS en `:root` de `css/style.css` y se reutilizan en todo el archivo con `var(--nombre)`.
 
 ### Tipografías
 - **Playfair Display** (Google Fonts) para títulos → *fallback* `Georgia, serif`.
