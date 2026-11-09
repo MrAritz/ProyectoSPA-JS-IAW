@@ -6,6 +6,25 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 
 ## [Sin publicar]
 
+## [2.0.0] - 2026-11-09
+Entrega 2: SPA con JavaScript nativo. Conservada en la rama `v2.0-spa`.
+
+### Añadido
+- `js/app.js` con navegación SPA, detalles de actividades, filtros, validación de formularios e interacción con los libros.
+- Navegación entre vistas sin recargar la página, con menú activo, foco en el título y cierre del menú en el móvil.
+- Botón «Ver detalles» en cada actividad que crea su fila de detalle (sin duplicados).
+- Filtros Intercambio, Donación, Lectura y Todos que resaltan filas sin acumular.
+- Validación con JavaScript de Contacto y Registro con mensajes de Bootstrap (`is-valid`, `is-invalid`, `alert`).
+- Botones «Más información» y «Destacar» en cada libro, usando sus atributos `data-*`.
+
+### Cambiado
+- Las 4 páginas se unifican en un único `index.html` con 4 secciones. La carpeta `pages/` se elimina (sigue en `v1.0-estatica`).
+- README actualizado con la explicación del JavaScript.
+
+### Cambiado por el equipo
+- Nueva paleta de colores (azul petróleo, terracota y arena).
+- Nuevos libros destacados y actividades.
+
 ## [1.0.1] - 2026-11-09
 
 ### Cambiado
@@ -31,5 +50,6 @@ Entrega 1: web estática multipágina con Bootstrap 5.3. Conservada en la rama `
 - La tabla de actividades ya no aplasta la descripción en móvil: se desplaza dentro de `.table-responsive`.
 - Fondo blanco en los campos de formulario para mejorar el contraste con el fondo de la página.
 
-[Sin publicar]: https://github.com/MrAritz/ProyectoSPA-JS-IAW/compare/v1.0-estatica...main
+[Sin publicar]: https://github.com/MrAritz/ProyectoSPA-JS-IAW/compare/v2.0-spa...main
+[2.0.0]: https://github.com/MrAritz/ProyectoSPA-JS-IAW/tree/v2.0-spa
 [1.0.0]: https://github.com/MrAritz/ProyectoSPA-JS-IAW/tree/v1.0-estatica
