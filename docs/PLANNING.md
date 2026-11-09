@@ -38,6 +38,7 @@ Una web para el Instituto Cuatrovientos que da a conocer los libros de la antigu
 | `--color-primary-dark` | `#163A2D` | Hover/activo de botones y footer |
 | `--color-accent` | `#8C2F39` | Burdeos: acentos, marcas de obligatorio, destacados |
 | `--color-gold` | `#C9A227` | Dorado: detalles decorativos (nunca texto pequeño sobre claro) |
+| `--color-reading` | `#2F4A6D` | Azul tinta: etiqueta de actividades de lectura |
 | `--color-paper` | `#FAF6EE` | Papel antiguo: fondo general |
 | `--color-ink` | `#2B2420` | Tinta: texto principal |
 | `--color-muted` | `#5C524A` | Texto secundario |
