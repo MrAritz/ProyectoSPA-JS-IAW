@@ -39,6 +39,10 @@ const registroParticipacion = document.querySelectorAll('.participacion'); // lo
 const errorParticipacion = document.querySelector('#registro-participacion-error');
 const registroNormas = document.querySelector('#registro-normas');
 
+// Libros
+const botonesInfoLibro = document.querySelectorAll('.btn-info-libro'); // "Más información"
+const botonesDestacar = document.querySelectorAll('.btn-destacar');    // "Destacar"
+
 
 /* ==========================================================
    1. NAVEGACIÓN SPA
@@ -367,7 +371,93 @@ function initFormularios() {
 
 
 /* ==========================================================
-   ARRANQUE
+   7. LIBROS: MÁS INFORMACIÓN Y DESTACAR
+   Cada botón busca SU card con closest('.card'),
+   así solo afecta a ese libro.
+   ========================================================== */
+
+// Crea un párrafo del tipo "Año: 2014" (la etiqueta va en negrita)
+function crearDato(etiqueta, valor) {
+  const parrafo = document.createElement('p');
+  parrafo.classList.add('mb-1');
+
+  const negrita = document.createElement('strong');
+  negrita.textContent = etiqueta + ': ';
+
+  parrafo.appendChild(negrita);
+  parrafo.append(valor); // append también acepta texto
+  return parrafo;
+}
+
+// Crea el bloque de detalle con los data-* de la card y lo añade al final
+function crearDetalleLibro(card) {
+  const detalle = document.createElement('div');
+  detalle.classList.add('detalle-libro');
+
+  detalle.appendChild(crearDato('Año', card.dataset.anio));
+  detalle.appendChild(crearDato('Páginas', card.dataset.paginas));
+  detalle.appendChild(crearDato('Estado', card.dataset.estado));
+  detalle.appendChild(crearDato('Dónde está', card.dataset.ubicacion));
+
+  const sinopsis = document.createElement('p');
+  sinopsis.classList.add('mt-2', 'mb-0');
+  sinopsis.textContent = card.dataset.sinopsis;
+  detalle.appendChild(sinopsis);
+
+  card.appendChild(detalle);
+}
+
+// Muestra u oculta el detalle del libro sin crearlo dos veces
+function toggleInfoLibro(boton) {
+  const card = boton.closest('.card');
+  const detalle = card.querySelector('.detalle-libro');
+
+  if (detalle === null) {
+    crearDetalleLibro(card);
+    boton.textContent = 'Ocultar información';
+    boton.setAttribute('aria-expanded', 'true');
+  } else if (detalle.hidden) {
+    detalle.hidden = false;
+    boton.textContent = 'Ocultar información';
+    boton.setAttribute('aria-expanded', 'true');
+  } else {
+    detalle.hidden = true;
+    boton.textContent = 'Más información';
+    boton.setAttribute('aria-expanded', 'false');
+  }
+}
+
+// Pone o quita la clase "destacado" en la card del botón
+function toggleDestacado(boton) {
+  const card = boton.closest('.card');
+  card.classList.toggle('destacado');
+
+  if (card.classList.contains('destacado')) {
+    boton.textContent = 'Quitar destacado';
+    boton.setAttribute('aria-pressed', 'true');
+  } else {
+    boton.textContent = 'Destacar';
+    boton.setAttribute('aria-pressed', 'false');
+  }
+}
+
+function initLibros() {
+  botonesInfoLibro.forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      toggleInfoLibro(boton);
+    });
+  });
+
+  botonesDestacar.forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      toggleDestacado(boton);
+    });
+  });
+}
+
+
+/* ==========================================================
+   ARRANQUE: se activa cada parte de la web
    ========================================================== */
 
 function init() {
@@ -375,6 +465,7 @@ function init() {
   initDetallesEventos();
   initFiltros();
   initFormularios();
+  initLibros();
 }
 
 init();

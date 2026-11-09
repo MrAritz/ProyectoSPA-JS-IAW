@@ -290,3 +290,17 @@ textarea:focus-visible {
 .evento.resaltado th {
   border-left: 6px solid var(--color-accent);
 }
+
+/* Detalle de libro que crea el JavaScript al final de la card */
+.detalle-libro {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-paper);
+  font-size: 0.95rem;
+}
+
+/* Card destacada con el botón "Destacar" */
+.book-card.destacado {
+  border: 3px solid var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-gold);
+}
