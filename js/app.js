@@ -15,6 +15,9 @@ const vistas = document.querySelectorAll('.vista');               // las 4 secci
 const menu = document.querySelector('#menuPrincipal');            // menú desplegable del móvil
 const botonMenu = document.querySelector('.navbar-toggler');      // botón "hamburguesa"
 
+// Actividades
+const botonesDetalle = document.querySelectorAll('.btn-detalle'); // botón "Ver detalles" de cada fila
+
 
 /* ==========================================================
    1. NAVEGACIÓN SPA
@@ -77,11 +80,61 @@ function initNavegacion() {
 
 
 /* ==========================================================
+   2. ACTIVIDADES: VER DETALLES
+   ========================================================== */
+
+// Crea la fila de detalle con el texto guardado en data-detalle
+function crearFilaDetalle(fila) {
+  const nuevaFila = document.createElement('tr');
+  nuevaFila.classList.add('detalle-evento');
+
+  const celda = document.createElement('td');
+  celda.colSpan = 5; // ocupa las 5 columnas de la tabla
+  celda.textContent = fila.dataset.detalle;
+
+  nuevaFila.appendChild(celda);
+  fila.after(nuevaFila); // la colocamos justo debajo de su actividad
+}
+
+// Muestra u oculta el detalle de la fila donde está el botón pulsado
+function toggleDetalleEvento(boton) {
+  const fila = boton.closest('tr'); // la fila de ESTE botón
+  const siguiente = fila.nextElementSibling; // la fila de debajo
+
+  // Si la fila de debajo no es su detalle, aún no existe: la creamos
+  if (siguiente === null || !siguiente.classList.contains('detalle-evento')) {
+    crearFilaDetalle(fila);
+    boton.textContent = 'Ocultar detalles';
+    boton.setAttribute('aria-expanded', 'true');
+  } else if (siguiente.hidden) {
+    // Ya existe y está oculta: la enseñamos (no creamos otra)
+    siguiente.hidden = false;
+    boton.textContent = 'Ocultar detalles';
+    boton.setAttribute('aria-expanded', 'true');
+  } else {
+    // Ya existe y se ve: la ocultamos
+    siguiente.hidden = true;
+    boton.textContent = 'Ver detalles';
+    boton.setAttribute('aria-expanded', 'false');
+  }
+}
+
+function initDetallesEventos() {
+  botonesDetalle.forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      toggleDetalleEvento(boton);
+    });
+  });
+}
+
+
+/* ==========================================================
    ARRANQUE
    ========================================================== */
 
 function init() {
   initNavegacion();
+  initDetallesEventos();
 }
 
 init();

@@ -271,3 +271,12 @@ textarea:focus-visible {
 .site-footer a {
   color: #fff;
 }
+
+/* ---------- 12. SPA: detalles, filtros y libros (Fase 2) ---------- */
+
+/* Fila de detalle que crea el JavaScript debajo de cada actividad */
+.detalle-evento td {
+  background-color: var(--color-paper-dark);
+  border-left: 4px solid var(--color-gold);
+  font-style: italic;
+}
