@@ -20,6 +20,25 @@ const botonesDetalle = document.querySelectorAll('.btn-detalle'); // botón "Ver
 const filasEvento = document.querySelectorAll('.evento');         // filas de actividades
 const botonesFiltro = document.querySelectorAll('.btn-filtro');   // Intercambio / Donación / Lectura / Todos
 
+// Formulario de contacto
+const formContacto = document.querySelector('#form-contacto');
+const alertaContacto = document.querySelector('#contacto-alerta');
+const contactoNombre = document.querySelector('#contacto-nombre');
+const contactoEmail = document.querySelector('#contacto-email');
+const contactoTelefono = document.querySelector('#contacto-telefono');
+const contactoAsunto = document.querySelector('#contacto-asunto');
+const contactoMensaje = document.querySelector('#contacto-mensaje');
+
+// Formulario de registro
+const formRegistro = document.querySelector('#form-registro');
+const alertaRegistro = document.querySelector('#registro-alerta');
+const registroNombre = document.querySelector('#registro-nombre');
+const registroEmail = document.querySelector('#registro-email');
+const registroCurso = document.querySelector('#registro-curso');
+const registroParticipacion = document.querySelectorAll('.participacion'); // los 3 checkboxes
+const errorParticipacion = document.querySelector('#registro-participacion-error');
+const registroNormas = document.querySelector('#registro-normas');
+
 
 /* ==========================================================
    1. NAVEGACIÓN SPA
@@ -174,6 +193,180 @@ function initFiltros() {
 
 
 /* ==========================================================
+   4. FORMULARIOS: FUNCIONES DE AYUDA
+   ========================================================== */
+
+// Pinta un campo en verde (is-valid) o en rojo (is-invalid).
+// Bootstrap enseña su .invalid-feedback cuando el campo tiene is-invalid.
+function marcarCampo(campo, esValido) {
+  if (esValido) {
+    campo.classList.remove('is-invalid');
+    campo.classList.add('is-valid');
+    campo.setAttribute('aria-invalid', 'false');
+  } else {
+    campo.classList.remove('is-valid');
+    campo.classList.add('is-invalid');
+    campo.setAttribute('aria-invalid', 'true');
+  }
+}
+
+// Deja un campo sin color (ni verde ni rojo)
+function quitarMarcas(campo) {
+  campo.classList.remove('is-valid');
+  campo.classList.remove('is-invalid');
+  campo.removeAttribute('aria-invalid');
+}
+
+// Email sencillo: algo antes de la @, y un punto después de la @ que no esté al final
+function emailValido(email) {
+  const posArroba = email.indexOf('@');
+  const posPunto = email.lastIndexOf('.');
+  return posArroba > 0 && posPunto > posArroba + 1 && posPunto < email.length - 1;
+}
+
+// Devuelve true si el texto solo tiene cifras del 0 al 9
+function soloNumeros(texto) {
+  for (let i = 0; i < texto.length; i++) {
+    if (texto[i] < '0' || texto[i] > '9') {
+      return false;
+    }
+  }
+  return true;
+}
+
+// Crea un alert de Bootstrap dentro del contenedor.
+// Antes vacía el contenedor para que las alertas no se acumulen.
+function mostrarAlerta(contenedor, tipo, texto) {
+  contenedor.textContent = '';
+
+  const alerta = document.createElement('div');
+  alerta.classList.add('alert', 'alert-' + tipo); // alert-success o alert-danger
+  alerta.setAttribute('role', 'alert');
+  alerta.textContent = texto;
+
+  contenedor.appendChild(alerta);
+}
+
+// Vacía el formulario y le quita todos los colores de validación
+function limpiarFormulario(formulario) {
+  formulario.reset();
+  formulario.querySelectorAll('.is-valid, .is-invalid').forEach(function (campo) {
+    quitarMarcas(campo);
+  });
+}
+
+// Lleva el foco al primer campo con error para corregirlo directamente
+function enfocarPrimerError(formulario) {
+  const primerError = formulario.querySelector('.is-invalid');
+  if (primerError !== null) {
+    primerError.focus();
+  }
+}
+
+
+/* ==========================================================
+   5. FORMULARIO DE CONTACTO
+   ========================================================== */
+
+function validarContacto(evento) {
+  evento.preventDefault(); // no se envía de verdad: el envío es simulado
+
+  // Leemos los valores (trim quita los espacios del principio y del final)
+  const nombre = contactoNombre.value.trim();
+  const email = contactoEmail.value.trim();
+  const telefono = contactoTelefono.value.trim();
+  const asunto = contactoAsunto.value;
+  const mensaje = contactoMensaje.value.trim();
+
+  // Comprobamos cada campo
+  const nombreOk = nombre.length >= 2;
+  const emailOk = emailValido(email);
+  const telefonoOk = telefono === '' || (telefono.length === 9 && soloNumeros(telefono)); // es opcional
+  const asuntoOk = asunto !== '';
+  const mensajeOk = mensaje.length >= 10;
+
+  marcarCampo(contactoNombre, nombreOk);
+  marcarCampo(contactoEmail, emailOk);
+  marcarCampo(contactoAsunto, asuntoOk);
+  marcarCampo(contactoMensaje, mensajeOk);
+
+  // El teléfono vacío no se pinta: no es obligatorio
+  if (telefono === '') {
+    quitarMarcas(contactoTelefono);
+  } else {
+    marcarCampo(contactoTelefono, telefonoOk);
+  }
+
+  if (nombreOk && emailOk && telefonoOk && asuntoOk && mensajeOk) {
+    mostrarAlerta(alertaContacto, 'success', '¡Gracias, ' + nombre + '! Hemos recibido tu mensaje y te responderemos pronto. (Envío simulado: no se ha guardado ningún dato).');
+    limpiarFormulario(formContacto);
+  } else {
+    mostrarAlerta(alertaContacto, 'danger', 'Revisa los campos marcados en rojo antes de enviar el mensaje.');
+    enfocarPrimerError(formContacto);
+  }
+}
+
+
+/* ==========================================================
+   6. FORMULARIO DE REGISTRO
+   ========================================================== */
+
+// Cuenta cuántos checkboxes de participación están marcados
+function contarParticipacion() {
+  let marcados = 0;
+  registroParticipacion.forEach(function (casilla) {
+    if (casilla.checked) {
+      marcados++;
+    }
+  });
+  return marcados;
+}
+
+function validarRegistro(evento) {
+  evento.preventDefault();
+
+  const nombre = registroNombre.value.trim();
+  const email = registroEmail.value.trim();
+  const curso = registroCurso.value;
+
+  const nombreOk = nombre.length >= 2;
+  const emailOk = emailValido(email);
+  const cursoOk = curso !== '';
+  const participacionOk = contarParticipacion() > 0;
+  const normasOk = registroNormas.checked;
+
+  marcarCampo(registroNombre, nombreOk);
+  marcarCampo(registroEmail, emailOk);
+  marcarCampo(registroCurso, cursoOk);
+  marcarCampo(registroNormas, normasOk);
+
+  // Los 3 checkboxes se pintan juntos y comparten un único mensaje de error
+  registroParticipacion.forEach(function (casilla) {
+    marcarCampo(casilla, participacionOk);
+  });
+  if (participacionOk) {
+    errorParticipacion.classList.remove('d-block');
+  } else {
+    errorParticipacion.classList.add('d-block'); // d-block hace visible el mensaje
+  }
+
+  if (nombreOk && emailOk && cursoOk && participacionOk && normasOk) {
+    mostrarAlerta(alertaRegistro, 'success', '¡Inscripción completada, ' + nombre + '! Te avisaremos por correo de las próximas actividades. (Envío simulado: no se ha guardado ningún dato).');
+    limpiarFormulario(formRegistro);
+    errorParticipacion.classList.remove('d-block');
+  } else {
+    mostrarAlerta(alertaRegistro, 'danger', 'Revisa los campos marcados en rojo antes de enviar la inscripción.');
+    enfocarPrimerError(formRegistro);
+  }
+}
+
+function initFormularios() {
+  formContacto.addEventListener('submit', validarContacto);
+  formRegistro.addEventListener('submit', validarRegistro);
+}
+
+
+/* ==========================================================
    ARRANQUE
    ========================================================== */
 
@@ -181,6 +374,7 @@ function init() {
   initNavegacion();
   initDetallesEventos();
   initFiltros();
+  initFormularios();
 }
 
 init();
