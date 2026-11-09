@@ -34,18 +34,25 @@ Práctica de *Implantación de Aplicaciones Web* (2º ASIR).
 ## Guía de estilos
 
 ### Paleta
+
 | Color | HEX | Uso |
 |---|---|---|
-| Verde biblioteca | `#1F4E3D` | Navbar, botones principales, títulos |
-| Verde oscuro | `#163A2D` | Hover de botones y footer |
-| Burdeos | `#8C2F39` | Acentos, campos obligatorios, etiqueta *Donación* |
-| Dorado | `#C9A227` | Detalles decorativos y foco sobre fondos oscuros |
-| Azul tinta | `#2F4A6D` | Etiqueta *Lectura* |
-| Papel | `#FAF6EE` | Fondo general |
-| Tinta | `#2B2420` | Texto principal |
-| Gris cálido | `#5C524A` | Texto secundario |
+| Azul petróleo | `#34495E` | Navbar, botones principales, títulos y cabeceras |
+| Azul profundo | `#253746` | Hover de botones y footer |
+| Terracota oscuro | `#934D39` | Acentos, campos obligatorios y etiquetas de donación |
+| Terracota suave | `#B66A50` | Detalles decorativos |
+| Terracota oscuro hover | `#783D30` | Estado hover de botones de acento |
+| Arena | `#D5B98C` | Líneas decorativas y foco sobre fondos oscuros |
+| Azul grisáceo | `#536B7C` | Etiqueta de lectura |
+| Blanco cálido | `#F3F1EB` | Fondo general |
+| Arena clara | `#E8E4DA` | Cabeceras secundarias |
+| Grafito | `#292D32` | Texto principal |
+| Gris azulado | `#5C6670` | Texto secundario |
+| Borde cálido | `#D5CEC1` | Bordes de tarjetas, formularios y cabeceras |
 
-Todas las combinaciones de texto cumplen **WCAG AA** (la más baja es 6,24:1). Los colores están definidos como variables CSS en `:root` de `css/style.css` y se reutilizan en todo el archivo con `var(--nombre)`.
+Los colores están definidos mediante variables CSS en `:root` de `css/style.css` y se reutilizan en los componentes de la web.
+
+Las combinaciones de texto y fondo deben comprobarse para garantizar el cumplimiento de WCAG.(la más baja es 6,24:1). Los colores están definidos como variables CSS en `:root` de `css/style.css` y se reutilizan en todo el archivo con `var(--nombre)`.
 
 ### Tipografías
 - **Playfair Display** (Google Fonts) para títulos → *fallback* `Georgia, serif`.

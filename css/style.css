@@ -5,16 +5,22 @@
 
 /* ---------- 1. Variables: colores y tipografías ---------- */
 :root {
-  --color-primary: #1f4e3d;      /* verde biblioteca */
-  --color-primary-dark: #163a2d; /* verde oscuro */
-  --color-accent: #8c2f39;       /* burdeos */
-  --color-accent-dark: #6f242d;  /* burdeos oscuro */
-  --color-gold: #c9a227;         /* dorado */
-  --color-reading: #2f4a6d;      /* azul tinta */
-  --color-paper: #faf6ee;        /* papel antiguo */
-  --color-paper-dark: #f0e8d8;   /* papel más oscuro */
-  --color-ink: #2b2420;          /* tinta (texto) */
-  --color-muted: #5c524a;        /* texto secundario */
+  --color-primary: #34495e;       /* Azul petróleo */
+  --color-primary-dark: #253746;  /* Azul profundo */
+
+  --color-accent: #934d39;        /* Terracota oscuro */
+  --color-accent-dark: #783d30;   /* Terracota para hover */
+  --color-accent-soft: #b66a50;   /* Terracota decorativo */
+
+  --color-gold: #d5b98c;          /* Arena */
+  --color-reading: #536b7c;       /* Azul grisáceo */
+
+  --color-paper: #f3f1eb;         /* Blanco cálido */
+  --color-paper-dark: #e8e4da;    /* Arena clara */
+
+  --color-ink: #292d32;           /* Grafito */
+  --color-muted: #5c6670;         /* Gris azulado */
+  --color-border: #d5cec1;        /* Borde cálido */
 
   --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-body: 'Source Sans 3', Arial, Helvetica, sans-serif;
@@ -148,12 +154,12 @@ textarea:focus-visible {
 
 .page-header {
   background-color: var(--color-paper-dark);
-  border-bottom: 1px solid #d9cfbd;
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* ---------- 7. Cards ---------- */
 .book-card {
-  border: 1px solid #d9cfbd;
+  border: 1px solid var(--color-border);
   transition: transform 0.2s;
 }
 
@@ -224,7 +230,7 @@ textarea:focus-visible {
 .form-select:focus,
 .form-check-input:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 0.25rem rgba(31, 78, 61, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(52, 73, 94, 0.25);
 }
 
 .form-check-input:checked {
@@ -234,7 +240,7 @@ textarea:focus-visible {
 
 .form-panel {
   background-color: #fff;
-  border: 1px solid #d9cfbd;
+  border: 1px solid var(--color-border);
   border-radius: 0.75rem;
 }
 
