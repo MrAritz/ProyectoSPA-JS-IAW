@@ -17,6 +17,8 @@ const botonMenu = document.querySelector('.navbar-toggler');      // botón "ham
 
 // Actividades
 const botonesDetalle = document.querySelectorAll('.btn-detalle'); // botón "Ver detalles" de cada fila
+const filasEvento = document.querySelectorAll('.evento');         // filas de actividades
+const botonesFiltro = document.querySelectorAll('.btn-filtro');   // Intercambio / Donación / Lectura / Todos
 
 
 /* ==========================================================
@@ -129,12 +131,56 @@ function initDetallesEventos() {
 
 
 /* ==========================================================
+   3. ACTIVIDADES: FILTROS POR TIPO
+   No usamos arrays ni .filter(): recorremos las filas del DOM
+   con forEach y comparamos su atributo data-tipo.
+   ========================================================== */
+
+// Resalta las filas del tipo elegido ("todos" quita el resaltado)
+function aplicarFiltro(tipo) {
+  // 1º) Quitamos el resaltado de TODAS las filas, para que no se acumule
+  filasEvento.forEach(function (fila) {
+    fila.classList.remove('resaltado');
+  });
+
+  // 2º) Resaltamos solo las que coinciden con el tipo elegido
+  if (tipo !== 'todos') {
+    filasEvento.forEach(function (fila) {
+      if (fila.dataset.tipo === tipo) {
+        fila.classList.add('resaltado');
+      }
+    });
+  }
+}
+
+// Marca como activo solo el botón de filtro pulsado
+function marcarFiltroActivo(botonPulsado) {
+  botonesFiltro.forEach(function (boton) {
+    boton.classList.remove('active');
+    boton.setAttribute('aria-pressed', 'false');
+  });
+  botonPulsado.classList.add('active');
+  botonPulsado.setAttribute('aria-pressed', 'true');
+}
+
+function initFiltros() {
+  botonesFiltro.forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      aplicarFiltro(boton.dataset.filtro);
+      marcarFiltroActivo(boton);
+    });
+  });
+}
+
+
+/* ==========================================================
    ARRANQUE
    ========================================================== */
 
 function init() {
   initNavegacion();
   initDetallesEventos();
+  initFiltros();
 }
 
 init();
